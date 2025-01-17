@@ -40,6 +40,7 @@ jobs:
       # chmod +x ./gradlew: 퍼미션 오류 발생시 처리
       # ./gradlew clean build
       - name: 단위 테스트 및 빌드
-        run:
+        run: |
+          chmod +x ./gradlew
           ./gradlew clean build
 
