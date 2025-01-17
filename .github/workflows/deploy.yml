@@ -62,3 +62,16 @@ jobs:
            mv ./build/libs/*SNAPSHOT.jar ./run.jar
            ls
 
+      # EC2로 업로드
+      # 호스트정보(IP), 접속자명(ubunto), 키파일(pem)
+      # 업로드 대상(run.jar),
+      # 타겟(EC2)의 특정 걍로 /home/ubuntu/server/demo
+      - name: EC2에 jar파일 업로드
+        uses: appleboy/scp-action@v0.1.7
+        with:
+            host: ${{ secrets.EC2_HOST }}
+            username: ${{ secrets.EC2_USER }}
+            key: ${{ secrets.EC2_KEY }}
+            source: run.jar
+            target: /home/ubuntu/server/demo
+
